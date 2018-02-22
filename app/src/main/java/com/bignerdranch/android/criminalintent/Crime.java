@@ -19,6 +19,10 @@ public class Crime {
         mDate = new Date();
     }
 
+    public Crime(UUID uuid) {
+        mId = uuid;
+    }
+
     public UUID getId() {
         return mId;
     }
@@ -45,5 +49,20 @@ public class Crime {
 
     public void setSolved(boolean mSolved) {
         this.mSolved = mSolved;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Crime crime = (Crime) o;
+
+        return getId().equals(crime.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
     }
 }
